@@ -5,7 +5,7 @@ import 'dart:convert';
 class OhmandaApi {
   final baseUrl = 'ohmanda.com';
 
-  Future<String> getDailyHoroscope(Sign sign) async {
+  Future<String?> getDailyHoroscope(Sign sign) async {
     try {
       final uri = Uri.http(baseUrl, '/api/horoscope/${signString(sign)}');
       final response = await http.get(uri);
@@ -14,7 +14,7 @@ class OhmandaApi {
       return json['horoscope'];
     } catch (e) {
       print(e.toString());
-      return ('An error occured');
+      return null;
     }
   }
 }
